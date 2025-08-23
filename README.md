@@ -16,8 +16,8 @@ Automates root cause analysis on a MySQL incident database and generates AI-powe
 - **Pandas**: Data handling
 
 ## Quick Start
-git clone https://github.com/VeeraReddyRavuri/SQL-GenAI-Incident-Analysis.git
-cd SQL-GenAI-Incident-Analysis
-docker build -t incident-analysis .
-docker run --rm --network="host" incident-analysis
+- git clone https://github.com/VeeraReddyRavuri/SQL-GenAI-Incident-Analysis.git
+- cd SQL-GenAI-Incident-Analysis
+- docker build -t incident-analysis .
+- docker run --rm --network="host" incident-analysis
 
