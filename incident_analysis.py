@@ -1,13 +1,17 @@
 import mysql.connector
 import pandas as pd
 import openai
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- MySQL Connection ---
 conn = mysql.connector.connect(
-    host="localhost",
-    user="incident_user",
-    password="Rveera@12",
-    database="incident_db"
+    host=os.getenv("MYSQL_HOST"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    database=os.getenv("MYSQL_DATABASE")
 )
 
 # --- Fetch incident data ---
@@ -17,13 +21,11 @@ print("Data fetched from MySQL:")
 print(df)
 
 # --- OpenAI Integration ---
-#openai.api_key = "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"
-
-#prompt = f"Summarize this incident data and provide actionable recommendations:\n{df.to_dict()}"
-#response = openai.ChatCompletion.create(
-#    model="gpt-3.5-turbo",
-#    messages=[{"role": "user", "content": prompt}]
-#)
-
-#print("\nAI Summary and Recommendations:")
-#print(response['choices'][0]['message']['content'])
+openai.api_key = os.getenv("OPENAI_API_KEY")
+prompt = f"Summarize this incident data and provide actionable recommendations:\n{df.to_dict()}"
+response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[{"role": "user", "content": prompt}]
+)
+print("\nAI Summary and Recommendations:")
+print(response['choices'][0]['message']['content'])
