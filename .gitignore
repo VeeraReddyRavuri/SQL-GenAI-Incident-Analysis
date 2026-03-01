@@ -1,0 +1,6 @@
+venv/
+cron.log
+__pycache__/
+*.pyc
+.env
+*.log
